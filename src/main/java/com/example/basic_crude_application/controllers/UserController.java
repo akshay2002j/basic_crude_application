@@ -13,7 +13,7 @@ public class UserController {
 
     final private UserServiceImpl userService;
 
-    UserController(UserServiceImpl userService) {
+    public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
@@ -28,5 +28,11 @@ public class UserController {
        User user = userService.getUserById(id);
        UserDto userDto = new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPhone());
        return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
+
+    @DeleteMapping()
+    public ResponseEntity<?> deleteUserById(@RequestParam Long id) {
+         userService.deleteUserById(id);
+        return new ResponseEntity<>("User deleted", HttpStatus.OK);
     }
 }
