@@ -3,7 +3,6 @@ package com.example.basic_crude_application.controllers;
 import com.example.basic_crude_application.entity.User;
 import com.example.basic_crude_application.entity.UserDto;
 import com.example.basic_crude_application.service.serviceImpl.UserServiceImpl;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +37,8 @@ public class UserController {
     }
 
     @PutMapping
-    public ResponseEntity<?> updateUser(@RequestBody User user) {
-        return null;
+    public ResponseEntity<?> updateUserById(@RequestParam Long id, @RequestBody UserDto userDto) {
+        userService.updateUserById(id,userDto);
+        return new ResponseEntity<String>(  "User updated", HttpStatus.OK);
     }
 }
