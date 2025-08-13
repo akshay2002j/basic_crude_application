@@ -3,6 +3,7 @@ package com.example.basic_crude_application.controllers;
 import com.example.basic_crude_application.entity.User;
 import com.example.basic_crude_application.entity.UserDto;
 import com.example.basic_crude_application.service.serviceImpl.UserServiceImpl;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +35,10 @@ public class UserController {
     public ResponseEntity<?> deleteUserById(@RequestParam Long id) {
          userService.deleteUserById(id);
         return new ResponseEntity<>("User deleted", HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateUser(@RequestBody User user) {
+        return null;
     }
 }
