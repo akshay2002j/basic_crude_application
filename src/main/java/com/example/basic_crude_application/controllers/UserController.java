@@ -35,4 +35,8 @@ public class UserController {
          userService.deleteUserById(id);
         return new ResponseEntity<>("User deleted", HttpStatus.OK);
     }
+    public ResponseEntity<?> updateUserById(@RequestParam Long id, @RequestBody UserDto userDto) {
+        userService.updateUserById(id,userDto);
+        return new ResponseEntity<String>(  "User updated", HttpStatus.OK);
+    }
 }
